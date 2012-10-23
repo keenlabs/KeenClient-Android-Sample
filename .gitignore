@@ -1,0 +1,9 @@
+# Mac crap
+.DS_Store
+
+# intellij
+.idea
+KeenAndroidSample.iml
+
+out
+local.properties
