@@ -1,4 +1,4 @@
-package keen.io.clients.android.example;
+package io.keen.client.android.example;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;

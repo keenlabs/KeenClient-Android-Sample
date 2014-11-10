@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.0"
 
     defaultConfig {
-        applicationId "keen.io.clients.android.example"
+        applicationId "io.keen.client.android.example"
         minSdkVersion 9
         targetSdkVersion 21
         versionCode 1
