@@ -62,7 +62,7 @@ public class MyActivity extends ActionBarActivity {
                 event.put("click-number", clickNumber++);
 
                 // Add it to the "purchases" collection in your Keen Project.
-                KeenClient.client().queueEvent("button-clicks", event);
+                KeenClient.client().queueEvent("android-sample-button-clicks", event);
                 break;
         }
     }
