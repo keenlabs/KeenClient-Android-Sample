@@ -103,7 +103,7 @@ public void handleClick(View view) {
 }
 ```
 
-And finally we send queued events in `onPause`. It's important to use the `Async` variant here, because network activity is no allowed on the UI thread:
+And finally we send queued events in `onPause`. It's important to use the `Async` variant here, because network activity is not allowed on the UI thread:
 
 ```java
 @Override
