@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">KeenClient-Android-Sample</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Keen IO Sample Android App</string>
+    <string name="send_event_button_text">Send Event!</string>
 
 </resources>
