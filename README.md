@@ -29,7 +29,10 @@ Building the sample then depends on your build tools.
 
 ### Eclipse
 
-TODO: Add Eclipse instructions (Pull Requests welcome!)
+* Download the latest Android SDK from [Maven Central](http://repo1.maven.org/maven2/io/keen/keen-client-api-android)
+  * Note: We publish both an AAR and a JAR; you may use whichever is more convenient based on your infrastructure and needs.
+
+TODO: Add detailed Eclipse instructions (Pull Requests welcome!)
 
 ## Running the Sample App
 
