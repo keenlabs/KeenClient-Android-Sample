@@ -54,39 +54,52 @@ TODO: Add Eclipse instructions (Pull Requests welcome!)
 
 ## Using the Sample App
 
-Each time you press the "Send Event!" button, the sample app queues an event to be sent to the Keen API with an increasing counter. Note that the events will not actually be sent until the activitiy's `onPause` method is called, so you will need to exist the app (e.g. by pressing your device's Home button) to cause events to be sent.
+Each time you press the "Send Event!" button the sample app queues an event to be sent to the Keen API with an increasing counter. Note that the events will not actually be sent until the activitiy's `onPause` method is called, so you will need to exit the app (e.g. by pressing your device's Home button) to cause events to be sent.
 
-After the events are sent, you should be able to see them in the web UI for your project.
+After the events are sent you should be able to see them in the web UI for your project.
 
 ## Guide to the Code
 
 First, we initialize the Keen Client in `onCreate`:
 
 ```java
-public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.main);
+// If the Keen Client isn't already initialized, initialize it.
+if (!KeenClient.isInitialized()) {
 
-    // Initialize the Keen Client.
-    if (!KeenClient.isInitialized()) {
-        KeenClient client = new AndroidKeenClientBuilder(this).build();  
-        KeenProject project = new KeenProject(PROJECT_ID, WRITE_KEY, READ_KEY);
-        client.setDefaultProject(project);
-        KeenClient.initialize(client);
-    }
+    // Create a new instance of the client.
+    KeenClient client = new AndroidKeenClientBuilder(this).build();
+
+    // Get the project ID and write key from string resources, then create a project and set
+    // it as the default for the client.
+    String projectId = getString(R.string.keen_project_id);
+    String writeKey = getString(R.string.keen_write_key);
+    KeenProject project = new KeenProject(projectId, writeKey, null);
+    client.setDefaultProject(project);
+
+    // During testing, enable logging and debug mode.
+    // NOTE: REMOVE THESE LINES BEFORE SHIPPING YOUR APPLICATION!
+    KeenLogging.enableLogging();
+    client.setDebugMode(true);
+
+    // Initialize the KeenClient singleton with the created client.
+    KeenClient.initialize(client);
 }
 ```
 
 Then we queue events in response to UI events (in this case, a button click):
 
 ```java
-private void handleButtonClick() {
-    // Create an event to upload to Keen.
-    Map<String, Object> event = new HashMap<String, Object>();
-    event.put("item", "golden widget");
+public void handleClick(View view) {
+    switch (view.getId()) {
+        case R.id.send_event_button:
+            // Create an event to upload to Keen.
+            Map<String, Object> event = new HashMap<String, Object>();
+            event.put("click-number", clickNumber++);
 
-    // Add it to the "purchases" collection in your Keen Project.
-    KeenClient.client().queueEvent("purchases", event);
+            // Add it to the "purchases" collection in your Keen Project.
+            KeenClient.client().queueEvent("android-sample-button-clicks", event);
+            break;
+    }
 }
 ```
 
