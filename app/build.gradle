@@ -22,5 +22,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.0'
-    compile 'io.keen:keen-client-api-android:2.1.0@aar'
+    compile 'io.keen:keen-client-api-android:2.1.1@aar'
 }
