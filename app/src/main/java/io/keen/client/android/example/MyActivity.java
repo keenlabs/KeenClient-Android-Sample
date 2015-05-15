@@ -14,7 +14,9 @@ import io.keen.client.java.KeenClient;
 import io.keen.client.java.KeenLogging;
 import io.keen.client.java.KeenProject;
 
-public class MyActivity extends ActionBarActivity {
+import android.app.Activity;
+
+public class MyActivity extends Activity {
 
     private static int clickNumber = 0;
 
