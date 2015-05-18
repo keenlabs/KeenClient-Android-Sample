@@ -1,6 +1,5 @@
 package io.keen.client.android.example;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +13,9 @@ import io.keen.client.java.KeenClient;
 import io.keen.client.java.KeenLogging;
 import io.keen.client.java.KeenProject;
 
-public class MyActivity extends ActionBarActivity {
+import android.app.Activity;
+
+public class MyActivity extends Activity {
 
     private static int clickNumber = 0;
 
