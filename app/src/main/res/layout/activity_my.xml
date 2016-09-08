@@ -15,4 +15,14 @@
         android:text="@string/send_event_button_text"
         android:onClick="handleClick"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/query_button"
+        android:text="@string/query_button_text"
+        android:onClick="handleClick"
+        android:layout_alignBottom="@+id/send_event_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

@@ -12,13 +12,14 @@ First, clone the repo:
 
 Next, you will need to have a Keen IO project to send events to. Create one via the Keen IO web interface if you haven't already.
 
-Open the file `app/src/main/res/values/keen.xml` and enter the project ID and write key for your project.
+Open the file `app/src/main/res/values/keen.xml` and enter the project ID/read key/write key for your project, as well as your
+collection name.
 
 Building the sample then depends on your build tools.
 
 ### Android Studio (Recommended)
 
-(These instructions were tested with Android Studio version 0.8.9.)
+(These instructions were tested with Android Studio version 2.1.3.)
 
 * Open Android Studio and select `Import Project`
 * Select the file `build.gradle` in the root of the cloned repo
@@ -54,64 +55,12 @@ TODO: Add Eclipse instructions (Pull Requests welcome!)
 
 ## Using the Sample App
 
-Each time you press the "Send Event!" button the sample app queues an event to be sent to the Keen API with an increasing counter. Note that the events will not actually be sent until the activitiy's `onPause` method is called, so you will need to exit the app (e.g. by pressing your device's Home button) to cause events to be sent.
+Each time you press the "Send Event!" button the sample app queues an event to be sent to the Keen API with an increasing
+counter. Note that the events will not actually be sent until the activitiy's `onPause` method is called, so you will need
+to exit the app or otherwise cause `onPause` to be called to cause events to be sent. (Rotating your device to cause an
+orientation change is one trick, but you can also just exit the app and re-open it.)
 
-After the events are sent you should be able to see them in the web UI for your project.
+You can press the "Query!" button to issue a count query on the same collection with a timeframe of `this_24_hours`. The
+result will be shown in a toast.
 
-## Guide to the Code
-
-First, we initialize the Keen Client in `onCreate`:
-
-```java
-// If the Keen Client isn't already initialized, initialize it.
-if (!KeenClient.isInitialized()) {
-
-    // Create a new instance of the client.
-    KeenClient client = new AndroidKeenClientBuilder(this).build();
-
-    // Get the project ID and write key from string resources, then create a project and set
-    // it as the default for the client.
-    String projectId = getString(R.string.keen_project_id);
-    String writeKey = getString(R.string.keen_write_key);
-    KeenProject project = new KeenProject(projectId, writeKey, null);
-    client.setDefaultProject(project);
-
-    // During testing, enable logging and debug mode.
-    // NOTE: REMOVE THESE LINES BEFORE SHIPPING YOUR APPLICATION!
-    KeenLogging.enableLogging();
-    client.setDebugMode(true);
-
-    // Initialize the KeenClient singleton with the created client.
-    KeenClient.initialize(client);
-}
-```
-
-Then we queue events in response to UI events (in this case, a button click):
-
-```java
-public void handleClick(View view) {
-    switch (view.getId()) {
-        case R.id.send_event_button:
-            // Create an event to upload to Keen.
-            Map<String, Object> event = new HashMap<String, Object>();
-            event.put("click-number", clickNumber++);
-
-            // Add it to the "purchases" collection in your Keen Project.
-            KeenClient.client().queueEvent("android-sample-button-clicks", event);
-            break;
-    }
-}
-```
-
-And finally we send queued events in `onPause`. It's important to use the `Async` variant here, because network activity is not allowed on the UI thread:
-
-```java
-@Override
-protected void onPause() {
-    // Send all queued events to Keen. Use the asynchronous method to
-    // avoid network activity on the main thread.
-    KeenClient.client().sendQueuedEventsAsync();
-
-    super.onPause();
-}
-```
+You should also be able to see the events show up in queries issued via the API or the web UI for your project.
