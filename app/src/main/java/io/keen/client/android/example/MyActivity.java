@@ -101,7 +101,7 @@ public class MyActivity extends Activity {
             return result;
         } catch (IOException e) {
             Log.w(this.getLocalClassName(), "count failed", e);
-            return 0;
+            return -1;
         }
     }
 
