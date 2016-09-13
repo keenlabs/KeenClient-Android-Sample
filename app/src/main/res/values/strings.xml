@@ -3,5 +3,6 @@
 
     <string name="app_name">Keen IO Sample Android App</string>
     <string name="send_event_button_text">Send Event!</string>
+    <string name="query_button_text">Query!</string>
 
 </resources>
