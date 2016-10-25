@@ -19,7 +19,7 @@ Building the sample then depends on your build tools.
 
 ### Android Studio (Recommended)
 
-(These instructions were tested with Android Studio version 2.1.3.)
+(These instructions were tested with Android Studio version 2.2.2.)
 
 * Open Android Studio and select `Import Project`
 * Select the file `build.gradle` in the root of the cloned repo
@@ -33,7 +33,6 @@ Building the sample then depends on your build tools.
 * Download the latest Android SDK from [Maven Central](http://repo1.maven.org/maven2/io/keen/keen-client-api-android)
   * Note: We publish both an AAR and a JAR; you may use whichever is more convenient based on your infrastructure and needs.
 
-TODO: Add detailed Eclipse instructions (Pull Requests welcome!)
 
 ## Running the Sample App
 
@@ -49,14 +48,11 @@ Connect an Android device to your development machine.
 * Install the debug APK on your device `./gradlew installDebug`
 * Start the APK: `<path to Android SDK>/platform-tools/adb -d shell am start io.keen.client.android.example/io.keen.client.android.example.MyActivity`
 
-### Eclipse
-
-TODO: Add Eclipse instructions (Pull Requests welcome!)
 
 ## Using the Sample App
 
 Each time you press the "Send Event!" button the sample app queues an event to be sent to the Keen API with an increasing
-counter. Note that the events will not actually be sent until the activitiy's `onPause` method is called, so you will need
+counter. Note that the events will not actually be sent until the activity's `onPause` method is called, so you will need
 to exit the app or otherwise cause `onPause` to be called to cause events to be sent. (Rotating your device to cause an
 orientation change is one trick, but you can also just exit the app and re-open it.)
 

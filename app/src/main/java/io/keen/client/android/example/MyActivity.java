@@ -68,7 +68,7 @@ public class MyActivity extends Activity {
                 Map<String, Object> event = new HashMap<>();
                 event.put("click-number", clickNumber++);
 
-                // Add it to the "purchases" collection in your Keen Project.
+                // Add it to the given collection in your Keen Project.
                 KeenClient.client().queueEvent(getCollection(), event);
                 break;
             case R.id.query_button:
