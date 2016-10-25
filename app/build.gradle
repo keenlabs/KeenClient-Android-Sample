@@ -31,7 +31,6 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
-    compile 'io.keen:keen-client-api-android:5.0.0@aar'
-    compile 'io.keen:keen-client-api-query:5.0.0'
-    compile 'io.keen:keen-client-java-core:5.0.0'
+    compile 'io.keen:keen-client-api-android:5.0.1@aar'
+    compile 'io.keen:keen-client-api-query:5.0.1'
 }
