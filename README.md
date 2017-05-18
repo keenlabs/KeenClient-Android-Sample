@@ -19,7 +19,7 @@ Building the sample then depends on your build tools.
 
 ### Android Studio (Recommended)
 
-(These instructions were tested with Android Studio version 2.2.2, 2.2.3 and 2.3.)
+(These instructions were tested with Android Studio version 2.2.2, 2.2.3, 2.3, and 2.3.2)
 
 * Open Android Studio and select `File->Open...` or from the Android Launcher select `Import project (Eclipse ADT, Gradle, etc.)` and navigate to the root directory of your project.
 * Select the directory or drill in and select the file `build.gradle` in the cloned repo.
