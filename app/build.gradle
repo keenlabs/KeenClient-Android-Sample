@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 28
     buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "io.keen.client.android.example"
-        minSdkVersion 9
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'io.keen:keen-client-api-android:5.2.0@aar'
-    compile 'io.keen:keen-client-api-query:5.2.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'io.keen:keen-client-api-android:6.0.0@aar'
+    implementation 'io.keen:keen-client-api-query:6.0.0'
 }
